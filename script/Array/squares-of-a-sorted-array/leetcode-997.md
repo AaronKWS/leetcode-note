@@ -1,6 +1,6 @@
 # 997. 有序数组的平方
 ### 给你一个按 非递减顺序 排序的整数数组 nums，返回 每个数字的平方 组成的新数组，要求也按 非递减顺序 排序。
-leetcode 24题[>>>点这里查看](https://leetcode-cn.com/problems/remove-element/)
+leetcode 997题[>>>点这里查看](https://leetcode-cn.com/problems/squares-of-a-sorted-array/submissions/)
 **示例：**
 > **输入**: nums = [-4,-1,0,3,10]           
 > **输出**: [0,1,9,16,100]                     
