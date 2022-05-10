@@ -31,8 +31,9 @@ var moveZeroes = function(nums) {
         right = 0;
 
     while (right < len) {
-        if (nums[right] && !nums[left]) {
-            [nums[right], nums[left]] = [nums[left], nums[right]];
+        if (nums[right]) {
+            // 优化一下，不优化也可以
+            !nums[left] && ([nums[right], nums[left]] = [nums[left], nums[right]]);
             left++;
         }
 
