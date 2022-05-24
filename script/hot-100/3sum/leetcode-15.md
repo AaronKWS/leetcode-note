@@ -14,4 +14,4 @@ leetcode 15题[>>>点这里查看](https://leetcode.cn/problems/3sum/)
 
 **提示：**
 1. 0 <= nums.length <= 3000
-2. -105 <= nums[i] <= 105
+2. -10^5 <= nums[i] <= 10^5
