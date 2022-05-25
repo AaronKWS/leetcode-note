@@ -9,17 +9,17 @@ const ora = require("ora");
 
 const text = figlet.textSync("Demo Cli");
 
-const projectDir = process.argv[2];
+const projectDir = process.argv[2].replace(/script/i, "");
 
 if (!projectDir) {
     const spinner = ora();
 
     spinner.fail(chalk.red("请指定项目生成位置\n"));
-    console.log(`   npm run new ${chalk.cyan("script/hot-100/xxx")}`);
+    console.log(`   npm run new ${chalk.cyan("hot-100/xxx")}`);
     process.exit();
 }
 
-let projectPath = path.resolve(projectDir);
+let projectPath = path.resolve("script", `./${projectDir}`);
 
 if (!isSafeToCreateProjectIn(projectPath)) {
     const spinner = ora();

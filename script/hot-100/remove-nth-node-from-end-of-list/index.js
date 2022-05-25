@@ -10,10 +10,11 @@
  * @return {ListNode}
  */
 
-// 解法一
+// 解法一(数组存储)
 var removeNthFromEnd = function (head, n) {
+    const dummy = new ListNode(0, head);
     const arr = [];
-    const p = head;
+    let p = dummy;
 
     while (p) {
         arr.push(p);
@@ -21,17 +22,75 @@ var removeNthFromEnd = function (head, n) {
         p = p.next;
     }
 
-    const len = arr.length;
+    const pre = arr.length - n - 1;
 
-    if (n > len) {
-        return p;
+    arr[pre].next = arr[pre].next.next;
+
+    return dummy.next;
+};
+
+// 解法二（先计算链表长度）
+var removeNthFromEnd = function (head, n) {
+    const dummy = new ListNode(0, head);
+    const len = (function (head) {
+        let len = 0;
+
+        while (head) {
+            len++;
+
+            head = head.next;
+        }
+
+        return len;
+    })(head);
+    let p = dummy;
+
+    for (let i = 0; i < len - n; i++) {
+        p = p.next;
     }
 
-    if (!(len - n)) {
-        head = arr[0].next;
-    } else {
-        arr[len - n - 1].next = arr[len - n].next;
+    p.next = p.next.next;
+
+    return dummy.next;
+};
+
+// 解法三（栈）
+var removeNthFromEnd = function (head, n) {
+    const dummy = new ListNode(0, head);
+    const stack = [];
+    let p = dummy;
+
+    while (p) {
+        stack.push(p);
+        p = p.next;
     }
 
-    return p;
+    while (n--) {
+        stack.pop();
+    }
+    const pre = stack.pop();
+
+    pre.next = pre.next.next;
+
+    return dummy.next;
+};
+
+// 解法四（双指针）
+var removeNthFromEnd = function (head, n) {
+    const dummy = new ListNode(0, head);
+    let first = head,
+        second = dummy;
+
+    while (n--) {
+        first = first.next;
+    }
+
+    while (first) {
+        first = first.next;
+        second = second.next;
+    }
+
+    second.next = second.next.next;
+
+    return dummy.next;
 };

@@ -5,13 +5,16 @@ const chalk = require("chalk");
 module.exports = function (creator, options, dirPath, callback) {
     const { name, num } = options;
 
-    console.log("dirPath", dirPath);
-
     // 获取当前命令执行的目录
     const currentCWDPath = process.cwd();
 
     // 模版文件内相关文件引用路径
-    const projectPath = path.join(currentCWDPath, dirPath, `../${name}`);
+    const projectPath = path.join(
+        currentCWDPath,
+        "script",
+        dirPath,
+        `../${name}`
+    );
 
     // 同步创建目录
     fs.mkdirSync(projectPath);
@@ -22,8 +25,6 @@ module.exports = function (creator, options, dirPath, callback) {
         "leetcode-1.md",
         path.join(projectPath, `leetcode-${num}.md`)
     );
-
-    console.log();
 
     creator.fsEditorStore.commit(() => {
         console.log();
